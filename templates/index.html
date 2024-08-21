@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicAnalyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MusicAnalyzer</h1>
+        <form action="{{ url_for('analyze') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="audio_file" accept=".mp3,.wav" required>
+            <button type="submit">Analyse starten</button>
+        </form>
+
+        {% if bpm %}
+        <div class="results">
+            <h2>Analyseergebnisse</h2>
+            <p><strong>BPM:</strong> {{ bpm }}</p>
+            <p><strong>Tonart:</strong> {{ tonart }}</p>
+            <p><strong>Durchschnittliche Lautstärke:</strong> {{ rms }}</p>
+            <h3>Frequenzspektrum</h3>
+            <img src="{{ url_for('static', filename=spectrogram) }}" alt="Frequenzspektrum">
+            <h3>Wellenform</h3>
+            <img src="{{ url_for('static', filename=waveform) }}" alt="Wellenform">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
