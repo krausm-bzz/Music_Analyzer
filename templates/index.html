@@ -20,10 +20,6 @@
             <p><strong>BPM:</strong> {{ bpm }}</p>
             <p><strong>Tonart:</strong> {{ tonart }}</p>
             <p><strong>Durchschnittliche Lautstärke:</strong> {{ rms }}</p>
-            <h3>Frequenzspektrum</h3>
-            <img src="{{ url_for('static', filename=spectrogram) }}" alt="Frequenzspektrum">
-            <h3>Wellenform</h3>
-            <img src="{{ url_for('static', filename=waveform) }}" alt="Wellenform">
         </div>
         {% endif %}
     </div>
